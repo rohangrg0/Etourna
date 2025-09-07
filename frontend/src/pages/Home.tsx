@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import HeroSection from "../components/HeroSection"; // import Footer
+import Features from "../components/Features";
 
 const Home: React.FC = () => {
   const handleNavigation = (section: string) => {
@@ -20,15 +21,7 @@ const Home: React.FC = () => {
       <HeroSection />
 
         {/* Features */}
-        <section id="features" className="min-h-screen flex flex-col justify-center items-center bg-[#151515] px-8">
-          <h2 className="text-3xl font-semibold mb-4">Features</h2>
-          <ul className="space-y-3 text-gray-300">
-            <li>✔ Easy tournament setup</li>
-            <li>✔ Real-time scoring & updates</li>
-            <li>✔ Team & player management</li>
-            <li>✔ Interactive dashboards</li>
-          </ul>
-        </section>
+        <Features />
 
         {/* About */}
         <section id="about" className="min-h-screen flex flex-col justify-center items-center px-8">
