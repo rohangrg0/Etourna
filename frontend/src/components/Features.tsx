@@ -51,7 +51,7 @@ const Features: React.FC = () => {
 
             {/* Overlay Text */}
             <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              <h3 className="text-xl font-bold text-[#FF0000] mb-2">
+              <h3 className="text-xl font-bold text-white mb-2">
                 {feature.title}
               </h3>
               <p className="text-gray-200 text-sm">{feature.description}</p>

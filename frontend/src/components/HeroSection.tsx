@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import ParticlesBG from "./ParticlesBG"; // same folder
 import controllerImg from "../assets/Console.png"; // make sure this matches your file name
 

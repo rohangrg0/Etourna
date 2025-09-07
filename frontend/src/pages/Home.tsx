@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import HeroSection from "../components/HeroSection"; // import Footer
 import Features from "../components/Features";
+import GamesSection from "../components/GameSection";
 
 const Home: React.FC = () => {
   const handleNavigation = (section: string) => {
@@ -20,7 +21,10 @@ const Home: React.FC = () => {
         <main className="flex-1">
       <HeroSection />
 
-        {/* Features */}
+        {/* GameSection */}
+        <GamesSection/>
+
+         {/* Features */}
         <Features />
 
         {/* About */}
