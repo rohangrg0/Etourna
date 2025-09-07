@@ -31,7 +31,7 @@ const Navbar: React.FC<HeaderProps> = ({ onNavigate }) => {
       <div
         className={`transition-all duration-500 rounded-2xl ${
           scrolled
-            ? "max-w-5xl w-full bg-black/60 backdrop-blur-md shadow-md py-2 px-6"
+            ? "max-w-5xl w-full bg-black/70 backdrop-blur-md shadow-md py-2 px-6"
             : "max-w-7xl w-full bg-transparent py-4 px-6"
         } flex items-center justify-between`}
       >
@@ -51,28 +51,28 @@ const Navbar: React.FC<HeaderProps> = ({ onNavigate }) => {
           <a 
             href="#" 
             onClick={(e) => { e.preventDefault(); handleNavClick('dashboard'); }}
-            className="text-gray-200 font-medium hover:text-red-400 transition-colors"
+            className="text-gray-200 font-medium hover:text-[#bd2208] transition-colors"
           >
             Dashboard
           </a>
           <a 
             href="#features" 
             onClick={(e) => { e.preventDefault(); handleNavClick('features'); }}
-            className="text-gray-200 font-medium hover:text-red-400 transition-colors"
+            className="text-gray-200 font-medium hover:text-[#bd2208] transition-colors"
           >
             Features
           </a>
           <a 
             href="#about" 
             onClick={(e) => { e.preventDefault(); handleNavClick('about'); }}
-            className="text-gray-200 font-medium hover:text-red-400 transition-colors"
+            className="text-gray-200 font-medium hover:text-[#bd2208] transition-colors"
           >
             About
           </a>
           <a 
             href="#contact" 
             onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }}
-            className="text-gray-200 font-medium hover:text-red-400 transition-colors"
+            className="text-gray-200 font-medium hover:text-[#bd2208] transition-colors"
           >
             Contact
           </a>
@@ -83,13 +83,13 @@ const Navbar: React.FC<HeaderProps> = ({ onNavigate }) => {
           <a 
             href="/login" 
             onClick={(e) => { e.preventDefault(); handleNavClick('login'); }}
-            className="text-gray-200 font-medium hover:text-red-400 transition-colors"
+            className="text-gray-200 font-medium hover:text-[#bd2208] transition-colors"
           >
             Login
           </a>
           <a
             href="#register"
-            className="border border-gray-200 text-gray-200 font-semibold py-1 px-4 rounded-full hover:bg-red-400 hover:border-red-400 hover:text-black transition-all"
+            className="border border-gray-200 text-gray-200 font-semibold py-1 px-4 rounded-full hover:bg-[#bd2208] hover:border-[#bd2208] hover:text-white transition-all"
           >
             Register Now
           </a>

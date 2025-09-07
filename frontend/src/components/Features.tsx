@@ -33,10 +33,10 @@ const Features: React.FC = () => {
   return (
     <section
       id="features"
-      className="min-h-screen flex flex-col justify-center items-center bg-[#151515] px-8 py-16"
+      className="min-h-[70vh] flex flex-col justify-center items-center bg-[#151515] px-8 py-16"
     >
       <h2 className="text-4xl font-bold mb-12">Features</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-6xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-7xl mx-auto">
         {features.map((feature, index) => (
           <div
             key={index}
@@ -46,12 +46,12 @@ const Features: React.FC = () => {
             <img
               src={feature.image}
               alt={feature.title}
-              className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110 group-hover:brightness-50"
+              className="w-72 h-96 object-cover transition-transform duration-500 group-hover:scale-110 group-hover:brightness-50 group-hover:grayscale"
             />
 
             {/* Overlay Text */}
             <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              <h3 className="text-xl font-bold text-white mb-2">
+              <h3 className="text-xl font-bold text-[#FF0000] mb-2">
                 {feature.title}
               </h3>
               <p className="text-gray-200 text-sm">{feature.description}</p>

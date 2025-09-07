@@ -1,84 +1,58 @@
-import React, { useState } from "react";
-import heroImage from "../assets/hero.jpeg"; // Replace with your uploaded image
-
-const slides = [
-  {
-    id: 1,
-    title: "Save up to $14,000 if you lease by 9/15",
-    subtitle: "Lease by September 15 and get up to $14,000 in lease offers on select new R1.",
-    cta1: "Shop R1S",
-    cta2: "Shop R1T",
-    image: heroImage,
-  },
-  // You can add more slides here
-];
+import React from "react";
+import { motion } from "framer-motion";
+import ParticlesBG from "./ParticlesBG"; // same folder
+import controllerImg from "../assets/Console.png"; // make sure this matches your file name
 
 const HeroSection: React.FC = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
-  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-
   return (
-    <div className="relative w-full h-screen overflow-hidden">
-      {slides.map((slide, index) => (
-        <div
-          key={slide.id}
-          className={`absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ${
-            index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
-          }`}
-        >
-          <img
-            src={slide.image}
-            alt={slide.title}
-            className="w-full h-full object-cover"
-          />
+    <div className="relative w-full h-[90vh] overflow-hidden bg-black">
+      {/* Background Particles */}
+      <ParticlesBG />
 
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-black/30 flex flex-col justify-center items-start px-10 md:px-20">
-            <h1 className="text-white text-4xl md:text-6xl font-bold mb-4 max-w-xl">
-              {slide.title}
-            </h1>
-            <p className="text-white text-lg md:text-2xl mb-6 max-w-lg">
-              {slide.subtitle}
-            </p>
-            <div className="flex gap-4">
-              <button className="bg-white text-black font-bold py-2 px-6 rounded">
-                {slide.cta1}
-              </button>
-              <button className="border border-white text-white font-bold py-2 px-6 rounded hover:bg-white hover:text-black transition">
-                {slide.cta2}
-              </button>
-            </div>
+      {/* Hero Content */}
+      <div className="relative z-10 flex flex-col md:flex-row justify-between items-center h-full px-10 md:px-20 ml-69">
+        
+        {/* Text Section */}
+        <div className="flex flex-col items-start max-w-xl">
+          <h1 className="text-white text-4xl md:text-6xl font-bold mb-4">
+            WELCOME TO ETOURNA
+          </h1>
+          <p className="text-white/80 text-lg md:text-2xl mb-6">
+            Coming up with all your favourite tournaments updates.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button className="bg-[#bd2208] text-black font-bold py-2 px-6 rounded">
+              Log In
+            </button>
+            <button className="border border-[#bd2208] text-[#bd2208] font-bold py-2 px-6 rounded hover:bg-[#bd2208] hover:text-white transition">
+              Explore Games
+            </button>
           </div>
         </div>
-      ))}
 
-      {/* Navigation Arrows */}
-      <button
-        onClick={prevSlide}
-        className="absolute top-1/2 left-5 transform -translate-y-1/2 bg-white/80 p-2 rounded-full hover:bg-white"
-      >
-        &#8592;
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute top-1/2 right-5 transform -translate-y-1/2 bg-white/80 p-2 rounded-full hover:bg-white"
-      >
-        &#8594;
-      </button>
+        {/* Controller Image */}
+        {/* <motion.div
+          className="mt-10 md:mt-0 md:mr-40 w-80 md:w-[40rem] flex justify-center items-center"
+          animate={{ y: [0, -20, 0] }}
+          transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+        >
+          <img
+            src={controllerImg}
+            alt="Controller"
+            className="w-full h-auto drop-shadow-2xl"
+          />
+        </motion.div> */}
 
-      {/* Dots */}
-      <div className="absolute bottom-5 w-full flex justify-center gap-2">
-        {slides.map((_, idx) => (
-          <span
-            key={idx}
-            className={`h-2 w-8 rounded-full cursor-pointer transition-all ${
-              idx === currentSlide ? "bg-white" : "bg-white/50"
-            }`}
-            onClick={() => setCurrentSlide(idx)}
-          ></span>
-        ))}
+        <div
+          className="mt-10 md:mt-0 md:mr-40 w-80 md:w-[40rem] flex justify-center items-center"
+        >
+          <img
+            src={controllerImg}
+            alt="Controller"
+            className="w-full h-auto drop-shadow-2xl"
+          />
+        </div>
+
       </div>
     </div>
   );
