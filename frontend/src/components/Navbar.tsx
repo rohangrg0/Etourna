@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import etourn from '../assets/etourn.png';
+import { Link } from "react-router-dom";
 
 interface HeaderProps {
   onNavigate?: (section: string) => void;
@@ -36,7 +37,7 @@ const Navbar: React.FC<HeaderProps> = ({ onNavigate }) => {
         } flex items-center justify-between`}
       >
         {/* Logo */}
-        <a href="/" className="flex-shrink-0">
+        <Link to="/" className="flex-shrink-0">
           <img
             src={etourn}
             alt="ETourna Logo"
@@ -44,7 +45,7 @@ const Navbar: React.FC<HeaderProps> = ({ onNavigate }) => {
               scrolled ? "h-8" : "h-10"
             }`}
           />
-        </a>
+        </Link>
 
         {/* Navigation Links */}
         <nav className="flex items-center space-x-6">
@@ -70,7 +71,7 @@ const Navbar: React.FC<HeaderProps> = ({ onNavigate }) => {
             About
           </a>
           <a 
-            href="#contact" 
+            href="../pages/Login.tsx" 
             onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }}
             className="text-gray-200 font-medium hover:text-[#bd2208] transition-colors"
           >
@@ -80,13 +81,12 @@ const Navbar: React.FC<HeaderProps> = ({ onNavigate }) => {
 
         {/* Right Side Buttons */}
         <div className="flex items-center space-x-4">
-          <a 
-            href="/login" 
-            onClick={(e) => { e.preventDefault(); handleNavClick('login'); }}
-            className="text-gray-200 font-medium hover:text-[#bd2208] transition-colors"
-          >
-            Login
-          </a>
+  <Link
+    to="/login"
+    className="text-gray-200 font-medium hover:text-[#bd2208] transition-colors"
+  >
+    Login
+  </Link>
           <a
             href="#register"
             className="border border-gray-200 text-gray-200 font-semibold py-1 px-4 rounded-full hover:bg-[#bd2208] hover:border-[#bd2208] hover:text-white transition-all"
