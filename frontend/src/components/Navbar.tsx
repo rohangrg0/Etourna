@@ -49,13 +49,12 @@ const Navbar: React.FC<HeaderProps> = ({ onNavigate }) => {
 
         {/* Navigation Links */}
         <nav className="flex items-center space-x-6">
-          <a 
-            href="#" 
-            onClick={(e) => { e.preventDefault(); handleNavClick('dashboard'); }}
+          <Link 
+            to = "/AdminDb"
             className="text-gray-200 font-medium hover:text-[#1E90FF] transition-colors"
           >
             Dashboard
-          </a>
+          </Link>
           <a 
             href="#features" 
             onClick={(e) => { e.preventDefault(); handleNavClick('features'); }}
