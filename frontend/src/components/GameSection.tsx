@@ -51,7 +51,7 @@ const GamesSection: React.FC = () => {
   return (
     <section
       id="games"
-      className="min-h-screen flex flex-col justify-center items-center bg-[#151515] px-8 py-16 overflow-hidden"
+       className="min-h-screen flex flex-col justify-center items-center bg-[#0A0A0F] px-8 py-16 overflow-hidden"
     >
       <h2 className="text-4xl font-bold mb-12">Games</h2>
 
@@ -95,7 +95,7 @@ const GamesSection: React.FC = () => {
                     <p className="text-gray-300 mb-4">{game.description}</p>
                     <a
                       href={game.link}
-                      className="bg-gradient-to-r from-[#C62300] to-[#500073] hover:from-[#C62300] hover:to-[#C62300] text-white font-bold py-2 px-6 rounded transition-colors duration-500 ease-in-out"
+                      className="bg-gradient-to-r from-[#1E90FF] to-[#00BFFF] hover:from-[#1E90FF] hover:to-[#1E90FF] text-white font-bold py-2 px-6 rounded transition-colors duration-500 ease-in-out"
                     >
                       Go Now
                     </a>
@@ -147,8 +147,8 @@ const GamesSection: React.FC = () => {
                     <p className="text-gray-300 mb-4">{game.description}</p>
                     <a
                       href={game.link}
-                      className="bg-gradient-to-r from-[#C62300] to-[#500073] hover:from-[#C62300] hover:to-[#C62300] text-white font-bold py-2 px-6 rounded transition-colors duration-500 ease-in-out"
-                    >
+                      className="bg-gradient-to-r from-[#1E90FF] to-[#00BFFF] hover:from-[#1E90FF] hover:to-[#1E90FF] text-white font-bold py-2 px-6 rounded transition-colors duration-500 ease-in-out"
+                      >
                       Go Now
                     </a>
                   </div>

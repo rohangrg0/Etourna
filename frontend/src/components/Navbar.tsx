@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import etourn from '../assets/etourn.png';
+import zoc from '../assets/zoc.svg';
+import { Link } from "react-router-dom";
 
 interface HeaderProps {
   onNavigate?: (section: string) => void;
@@ -36,63 +37,41 @@ const Navbar: React.FC<HeaderProps> = ({ onNavigate }) => {
         } flex items-center justify-between`}
       >
         {/* Logo */}
-        <a href="/" className="flex-shrink-0">
+        <Link to="/" className="flex-shrink-0">
           <img
-            src={etourn}
-            alt="ETourna Logo"
+            src={zoc}
+            alt="Zoc Logo"
             className={`object-contain transition-all duration-500 ${
               scrolled ? "h-8" : "h-10"
             }`}
           />
-        </a>
+        </Link>
 
         {/* Navigation Links */}
-        <nav className="flex items-center space-x-6">
-          <a 
-            href="#" 
-            onClick={(e) => { e.preventDefault(); handleNavClick('dashboard'); }}
-            className="text-gray-200 font-medium hover:text-[#bd2208] transition-colors"
+        <nav className="hidden md:flex gap-6">
+          <button
+            onClick={() => handleNavClick("home")}
+            className="text-white hover:text-[#00BFFF] transition"
           >
-            Dashboard
-          </a>
-          <a 
-            href="#features" 
-            onClick={(e) => { e.preventDefault(); handleNavClick('features'); }}
-            className="text-gray-200 font-medium hover:text-[#bd2208] transition-colors"
+            Home
+          </button>
+          <button
+            onClick={() => handleNavClick("tournaments")}
+            className="text-white hover:text-[#00BFFF] transition"
           >
-            Features
-          </a>
-          <a 
-            href="#about" 
-            onClick={(e) => { e.preventDefault(); handleNavClick('about'); }}
-            className="text-gray-200 font-medium hover:text-[#bd2208] transition-colors"
+            Tournaments
+          </button>
+          <button
+            onClick={() => handleNavClick("about")}
+            className="text-white hover:text-[#00BFFF] transition"
           >
             About
-          </a>
-          <a 
-            href="#contact" 
-            onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }}
-            className="text-gray-200 font-medium hover:text-[#bd2208] transition-colors"
-          >
-            Contact
-          </a>
+          </button>
         </nav>
 
-        {/* Right Side Buttons */}
-        <div className="flex items-center space-x-4">
-          <a 
-            href="/login" 
-            onClick={(e) => { e.preventDefault(); handleNavClick('login'); }}
-            className="text-gray-200 font-medium hover:text-[#bd2208] transition-colors"
-          >
-            Login
-          </a>
-          <a
-            href="#register"
-            className="border border-gray-200 text-gray-200 font-semibold py-1 px-4 rounded-full hover:bg-[#bd2208] hover:border-[#bd2208] hover:text-white transition-all"
-          >
-            Register Now
-          </a>
+        {/* Mobile Menu Placeholder */}
+        <div className="md:hidden">
+          {/* You can add a hamburger menu here later */}
         </div>
       </div>
     </header>
