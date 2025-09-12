@@ -48,30 +48,51 @@ const Navbar: React.FC<HeaderProps> = ({ onNavigate }) => {
         </Link>
 
         {/* Navigation Links */}
-        <nav className="hidden md:flex gap-6">
-          <button
-            onClick={() => handleNavClick("home")}
-            className="text-white hover:text-[#00BFFF] transition"
+        <nav className="flex items-center space-x-6">
+          <a 
+            href="#" 
+            onClick={(e) => { e.preventDefault(); handleNavClick('dashboard'); }}
+            className="text-gray-200 font-medium hover:text-[#1E90FF] transition-colors"
           >
-            Home
-          </button>
-          <button
-            onClick={() => handleNavClick("tournaments")}
-            className="text-white hover:text-[#00BFFF] transition"
+            Dashboard
+          </a>
+          <a 
+            href="#features" 
+            onClick={(e) => { e.preventDefault(); handleNavClick('features'); }}
+            className="text-gray-200 font-medium hover:text-[#1E90FF] transition-colors"
           >
-            Tournaments
-          </button>
-          <button
-            onClick={() => handleNavClick("about")}
-            className="text-white hover:text-[#00BFFF] transition"
+            Features
+          </a>
+          <a 
+            href="#about" 
+            onClick={(e) => { e.preventDefault(); handleNavClick('about'); }}
+            className="text-gray-200 font-medium hover:text-[#1E90FF] transition-colors"
           >
             About
-          </button>
+          </a>
+          <a 
+            href="../pages/Login.tsx" 
+            onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }}
+            className="text-gray-200 font-medium hover:text-[#1E90FF] transition-colors"
+          >
+            Contact
+          </a>
         </nav>
 
-        {/* Mobile Menu Placeholder */}
-        <div className="md:hidden">
-          {/* You can add a hamburger menu here later */}
+        {/* Right Side Buttons */}
+        <div className="flex items-center space-x-4">
+  <Link
+    to="/login"
+    className="text-gray-200 font-medium hover:text-[#1E90FF] transition-colors"
+  >
+    Login
+  </Link>
+          <Link
+            to="/register"
+            className="border border-gray-200 text-gray-200 font-semibold py-1 px-4 rounded-full hover:bg-[#1E90FF] hover:border-[#1E90FF] hover:text-white transition-all"
+          >
+            Register Now
+          </Link>
         </div>
       </div>
     </header>

@@ -1,23 +1,37 @@
 import React, { useState, useEffect } from "react";
 import ParticlesBG from "./ParticlesBG";
-import zocImg from "../assets/zoc.png"; // New image
-import Login from "./LoginComp";
-import { Link } from "react-router-dom";
+import controllerImg from "../assets/zoc.png";
+import Login from "../components/LoginComp";
+import Register from "../components/RegisterComp";
 
 const HeroSection: React.FC = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+  const [loginFade, setLoginFade] = useState(false);
+  const [registerFade, setRegisterFade] = useState(false);
 
-  // Handle fade-in when opening modal
+  // Open Login modal with fade-in
   useEffect(() => {
     if (isLoginOpen) {
-      setShowModal(true);
+      setTimeout(() => setLoginFade(true), 10); // small delay for fade-in
     }
   }, [isLoginOpen]);
 
-  const closeModal = () => {
-    setShowModal(false); // fade-out first
-    setTimeout(() => setIsLoginOpen(false), 300); // hide modal after animation
+  // Open Register modal with fade-in
+  useEffect(() => {
+    if (isRegisterOpen) {
+      setTimeout(() => setRegisterFade(true), 10);
+    }
+  }, [isRegisterOpen]);
+
+  const closeLoginModal = () => {
+    setLoginFade(false); // fade-out
+    setTimeout(() => setIsLoginOpen(false), 300); // then hide modal
+  };
+
+  const closeRegisterModal = () => {
+    setRegisterFade(false);
+    setTimeout(() => setIsRegisterOpen(false), 300);
   };
 
   return (
@@ -31,39 +45,35 @@ const HeroSection: React.FC = () => {
         <div className="flex flex-col items-start max-w-xl">
           <h1 className="text-white text-4xl md:text-6xl font-bold mb-4">
             WELCOME TO ZONE-O-C
-            <br />
-            WELCOME TO ETOURNA
           </h1>
           <p className="text-white/80 text-lg md:text-2xl mb-6">
             Coming up with all your favourite tournaments updates.
           </p>
-
           <div className="flex flex-col sm:flex-row gap-4">
-            {/* Log In Popup */}
+            {/* Log In - Opens Popup */}
             <button
               onClick={() => setIsLoginOpen(true)}
               className="bg-[#00BFFF] text-black font-bold py-2 px-6 rounded inline-block text-center"
             >
-              Log In (Popup)
+              Log In
             </button>
 
-            {/* Log In Page Navigation */}
-            <Link
-              to="/login"
-              className="bg-[#bd2208] text-black font-bold py-2 px-6 rounded inline-block text-center"
+            <button
+              onClick={() => setIsRegisterOpen(true)}
+              className="border border-[#00BFFF] text-[#00BFFF] font-bold py-2 px-6 rounded hover:bg-[#00BFFF] hover:text-black transition"
             >
-              Log In (Page)
-            </Link>
-
-            <button className="border border-[#00BFFF] text-[#00BFFF] font-bold py-2 px-6 rounded hover:bg-[#00BFFF] hover:text-black transition">
-              Explore Games
+              Get Started
             </button>
           </div>
         </div>
 
-        {/* Hero Image */}
-        <div className="mt-10 md:mt-0">
-          <img src={zocImg} alt="ZONE-O-C" className="w-80 h-auto" />
+        {/* Controller Image */}
+        <div className="mt-10 md:mt-0 md:mr-40 w-80 md:w-[40rem] flex justify-center items-center">
+          <img
+            src={controllerImg}
+            alt="Controller"
+            className="w-full h-auto drop-shadow-2xl"
+          />
         </div>
       </div>
 
@@ -71,25 +81,48 @@ const HeroSection: React.FC = () => {
       {isLoginOpen && (
         <div
           className={`fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm transition-opacity duration-300 ${
-            showModal ? "opacity-100" : "opacity-0"
+            loginFade ? "opacity-100" : "opacity-0"
           }`}
-          onClick={closeModal}
+          onClick={closeLoginModal}
         >
           <div
             className={`relative w-full max-w-lg mx-4 transition-transform duration-300 ${
-              showModal ? "scale-100" : "scale-90"
+              loginFade ? "scale-100" : "scale-90"
             }`}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
             <button
-              onClick={closeModal}
+              onClick={closeLoginModal}
               className="absolute top-3 right-3 text-gray-400 hover:text-white text-2xl font-bold"
             >
               &times;
             </button>
-
             <Login />
+          </div>
+        </div>
+      )}
+
+      {/* Register Modal */}
+      {isRegisterOpen && (
+        <div
+          className={`fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm transition-opacity duration-300 ${
+            registerFade ? "opacity-100" : "opacity-0"
+          }`}
+          onClick={closeRegisterModal}
+        >
+          <div
+            className={`relative w-full max-w-lg mx-4 transition-transform duration-300 ${
+              registerFade ? "scale-100" : "scale-90"
+            }`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={closeRegisterModal}
+              className="absolute top-3 right-3 text-gray-400 hover:text-white text-2xl font-bold"
+            >
+              &times;
+            </button>
+            <Register />
           </div>
         </div>
       )}

@@ -2,7 +2,7 @@ import React from "react";
 import Login from "../components/LoginComp";
 import Navbar from "../components/Navbar"; // optional
 import Footer from "../components/Footer"; // optional
-import MSC from "../assets/msc.png"; // main image
+import MSC from "../assets/msc.png"; // import your image
 
 const LoginPage: React.FC = () => {
   return (

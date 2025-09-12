@@ -51,7 +51,7 @@ const GamesSection: React.FC = () => {
   return (
     <section
       id="games"
-       className="min-h-screen flex flex-col justify-center items-center bg-[#0A0A0F] px-8 py-16 overflow-hidden"
+      className="min-h-screen flex flex-col justify-center items-center bg-[#0A0A0F] px-8 py-16 overflow-hidden"
     >
       <h2 className="text-4xl font-bold mb-12">Games</h2>
 
@@ -148,7 +148,7 @@ const GamesSection: React.FC = () => {
                     <a
                       href={game.link}
                       className="bg-gradient-to-r from-[#1E90FF] to-[#00BFFF] hover:from-[#1E90FF] hover:to-[#1E90FF] text-white font-bold py-2 px-6 rounded transition-colors duration-500 ease-in-out"
-                      >
+                    >
                       Go Now
                     </a>
                   </div>
