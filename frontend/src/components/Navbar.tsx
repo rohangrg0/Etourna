@@ -52,10 +52,10 @@ const Navbar: React.FC<HeaderProps> = ({ onNavigate }) => {
           <a 
             href="#" 
             onClick={(e) => { e.preventDefault(); handleNavClick('dashboard'); }}
-            className="text-gray-200 font-medium hover:text-[#1E90FF] transition-colors"
+            className="text-gray-200 font-medium hover:text-[#bd2208] transition-colors"
           >
             Dashboard
-          </a>
+          </Link>
           <a 
             href="#features" 
             onClick={(e) => { e.preventDefault(); handleNavClick('features'); }}
@@ -81,18 +81,19 @@ const Navbar: React.FC<HeaderProps> = ({ onNavigate }) => {
 
         {/* Right Side Buttons */}
         <div className="flex items-center space-x-4">
-  <Link
-    to="/login"
-    className="text-gray-200 font-medium hover:text-[#1E90FF] transition-colors"
-  >
-    Login
-  </Link>
+          <a 
+            href="/login" 
+            onClick={(e) => { e.preventDefault(); handleNavClick('login'); }}
+            className="text-gray-200 font-medium hover:text-[#bd2208] transition-colors"
+          >
+            Login
+          </a>
           <a
             href="#register"
-            className="border border-gray-200 text-gray-200 font-semibold py-1 px-4 rounded-full hover:bg-[#1E90FF] hover:border-[#1E90FF] hover:text-white transition-all"
+            className="border border-gray-200 text-gray-200 font-semibold py-1 px-4 rounded-full hover:bg-[#bd2208] hover:border-[#bd2208] hover:text-white transition-all"
           >
             Register Now
-          </a>
+          </Link>
         </div>
       </div>
     </header>

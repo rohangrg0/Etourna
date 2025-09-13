@@ -1,17 +1,12 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Login from "./pages/Login"; // create this page // create this page
-import "./index.css";
+import Home from "./pages/Home"; // adjust path if your Home.tsx is somewhere else
+import "./index.css"; // Tailwind styles
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-    </Router>
+    <div className="font-sans">
+      <Home />
+    </div>
   );
 };
 
