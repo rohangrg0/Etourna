@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ParticlesBG from "./ParticlesBG";
-import controllerImg from "../assets/zoc.png";
+import controllerImg from "../assets/Device.png";
 import Login from "../components/LoginComp";
 import Register from "../components/RegisterComp";
 
@@ -68,13 +68,15 @@ const HeroSection: React.FC = () => {
         </div>
 
         {/* Controller Image */}
-        <div className="mt-10 md:mt-0 md:mr-40 w-80 md:w-[40rem] flex justify-center items-center">
-          <img
-            src={controllerImg}
-            alt="Controller"
-            className="w-full h-auto drop-shadow-2xl"
-          />
-        </div>
+       {/* Controller Image */}
+<div className="absolute right-[-10%] bottom-0 w-[80rem]">
+  <img
+    src={controllerImg}
+    alt="Controller"
+    className="w-full h-auto drop-shadow-2xl"
+  />
+</div>
+
       </div>
 
       {/* Login Modal */}

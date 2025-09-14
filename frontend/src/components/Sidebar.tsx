@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+// import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import { Home, Users, List, History, Trophy, Grid, Settings, LogOut } from "lucide-react";
+import { Home, Users, List, History, Trophy, Grid, Settings, LogOut, } from "lucide-react";
 import logo from "../assets/zoc.svg";
+import Slogo from "../assets/O.svg";
+
 
 interface SidebarProps {
   username: string;
@@ -10,9 +13,9 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ username, avatarUrl }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
 
-  const expanded = !isCollapsed || isHovered;
+  const expanded = !isCollapsed;
+
   const location = useLocation();
 
   const menuItems = [
@@ -31,31 +34,32 @@ const Sidebar: React.FC<SidebarProps> = ({ username, avatarUrl }) => {
       className={`${
         expanded ? "w-64" : "w-20"
       } bg-[#11121A] text-gray-300 border-r border-cyan-500 transition-all duration-300 flex flex-col`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       {/* Logo */}
+      {/* Logo */}
       <div className="flex justify-center p-4">
-        <Link to="/">
-          <img
-            src={logo}
-            alt="Zone-o-C Logo"
-            className={`object-contain transition-all duration-300 ${
-              expanded ? "w-32 h-auto" : "w-12 h-auto"
-            }`}
-          />
-        </Link>
+      <Link to="/">
+      <img
+      src={expanded ? logo : Slogo}
+      alt="Zone-o-C Logo"
+      className={`object-contain transition-all duration-300 ${
+        expanded ? "w-32 h-auto" : "w-12 h-auto"
+      }`}
+       />
+       </Link>
       </div>
 
-      {/* Toggle Button */}
-      <div className="flex justify-end p-2">
-        <button
-          onClick={() => setIsCollapsed(!isCollapsed)}
-          className="text-[#00FFFF] hover:text-white transition"
-        >
-          {isCollapsed ? "" : ""}
-        </button>
-      </div>
+     {/* Toggle Button */}
+      <div className="flex justify-center p-2">
+    <button
+    onClick={() => setIsCollapsed(!isCollapsed)}
+    className="text-[#00FFFF] hover:text-white transition px-3 py-1 rounded-md hover:bg-[#1A1B25] text-xl font-bold"
+    >
+    ≡
+    </button>
+    </div>
+
+
 
       {/* Profile */}
       <div className="flex flex-col items-center mb-8 transition-all duration-300">
