@@ -33,7 +33,7 @@ const Features: React.FC = () => {
   return (
     <section
       id="features"
-      className="min-h-[70vh] flex flex-col justify-center items-center bg-[#151515] px-8 py-16"
+      className="min-h-[70vh] flex flex-col justify-center items-center bg-[#0A0A0F] px-8 py-16"
     >
       <h2 className="text-4xl font-bold mb-12">Features</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-7xl mx-auto">

@@ -21,7 +21,7 @@ const Sidebar: React.FC<SidebarProps> = ({ username, avatarUrl }) => {
     { label: "Match List", icon: <List size={20} />, to: "/admin/matches" },
     { label: "Tournament History", icon: <History size={20} />, to: "/admin/history" },
     { label: "Standings", icon: <Trophy size={20} />, to: "/admin/standings" },
-    { label: "Brackets", icon: <Grid size={20} />, to: "/adbrac" },
+    { label: "Brackets", icon: <Grid size={20} />, to: "/admin/brackets" },
     { label: "Settings", icon: <Settings size={20} />, to: "/admin/settings" },
     { label: "Log Out", icon: <LogOut size={20} />, to: "/logout" },
   ];
