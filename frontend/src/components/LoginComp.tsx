@@ -11,7 +11,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-black/80 backdrop-blur-xl p-10 rounded-2xl shadow-2xl">
+    <div className="w-full bg-[#FAF7F0] backdrop-blur-xl p-10 rounded-2xl shadow-2xl">
       <h2 className="text-4xl font-bold text-center text-cyan-400 mb-8">
         Login
       </h2>
@@ -32,7 +32,7 @@ const Login: React.FC = () => {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
             required
-            className="w-full px-4 py-2 rounded-lg bg-[#1f1f1f] text-white placeholder-gray-500 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+            className="w-full px-4 py-2 rounded-lg bg-[#FAF7F0] text-[#4A4947] placeholder-[#4A4947] border border-[#B17457] focus:outline-none focus:ring-2 focus:ring-[#B17457]"
           />
         </div>
 
@@ -51,14 +51,14 @@ const Login: React.FC = () => {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter your password"
             required
-            className="w-full px-4 py-2 rounded-lg bg-[#1f1f1f] text-white placeholder-gray-500 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+            className="w-full px-4 py-2 rounded-lg bg-[#FAF7F0] text-[#4A4947] placeholder-[#4A4947] border border-[#B17457] focus:outline-none focus:ring-2 focus:ring-[#B17457]"
           />
         </div>
 
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full py-3 px-4 bg-cyan-500 hover:bg-cyan-600 text-black font-bold rounded-lg transition duration-300"
+          className="w-full py-3 px-4 bg-gradient-to-r from-[#B17457] to-[#4A4947] hover:from-[#B17457] hover:to-[#B17457] text-white font-bold rounded-lg transition duration-300"
         >
           Login
         </button>

@@ -6,7 +6,7 @@ import MSC from "../assets/msc.png"; // import your image
 
 const LoginPage: React.FC = () => {
   return (
-    <div className="bg-[#0A0A0F] min-h-screen flex flex-col">
+    <div className="bg-[#FAF7F0] min-h-screen flex flex-col">
       {/* Navbar */}
       <Navbar />
 

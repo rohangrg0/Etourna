@@ -1,0 +1,26 @@
+# FastAPI framework
+fastapi
+
+# ASGI server
+uvicorn[standard]
+
+# PostgreSQL driver (sync)
+psycopg2-binary
+
+# Async PostgreSQL driver
+asyncpg
+
+# SQLAlchemy ORM
+SQLAlchemy
+
+# Async database support
+databases[postgresql]
+
+# Pydantic for data validation (usually comes with FastAPI)
+pydantic
+
+# Environment variable management
+python-dotenv
+
+# Database migrations
+alembic

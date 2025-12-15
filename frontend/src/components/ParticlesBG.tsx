@@ -15,7 +15,7 @@ const ParticlesBG: React.FC = () => {
       className="absolute inset-0 w-full h-full"
       options={{
         fullScreen: { enable: false },        // we’ll control it with CSS
-        background: { color: "#0A0A0F" },     // pure black
+        background: { color: "#FAF7F0" },     // pure black
         fpsLimit: 60,
         detectRetina: true,
         interactivity: {
@@ -31,10 +31,10 @@ const ParticlesBG: React.FC = () => {
         },
         particles: {
           number: { value: 80, density: { enable: true, area: 800 } },
-          color: { value: "#00FFFF" },
+          color: { value: "#4A4947" },
           links: {
             enable: true,
-            color: "#00FFFF",
+            color: "#4A4947",
             distance: 150,
             opacity: 0.3,
             width: 1,
