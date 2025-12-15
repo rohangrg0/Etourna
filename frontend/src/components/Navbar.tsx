@@ -51,7 +51,9 @@ const Navbar: React.FC<HeaderProps> = ({ onNavigate }) => {
         <nav className="flex items-center space-x-6">
           <Link 
             to = "/admindashboard"
+
             className="text-[#4A4947] font-medium hover:text-[#B17457] transition-colors"
+
           >
             Dashboard
           </Link>
