@@ -1,6 +1,6 @@
-
-from sqlalchemy import Column, Integer, String, DateTime, func
-from app.database.database import Base
+from sqlalchemy import Column, Integer, String, DateTime
+from datetime import datetime
+from app.database.session import Base
 
 class User(Base):
     __tablename__ = "users"
@@ -8,5 +8,5 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String, unique=True, index=True, nullable=False)
     full_name = Column(String, nullable=False)
-    hashed_password = Column(String, nullable=False)
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    password = Column(String, nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow)

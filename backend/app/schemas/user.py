@@ -1,15 +1,18 @@
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel
 
 class UserCreate(BaseModel):
-    email: EmailStr
-    full_name: str = Field(min_length=2, max_length=100)
-    password: str = Field(min_length=8)
+    email: str
+    full_name: str
+    password: str
+
+class UserLogin(BaseModel):
+    email: str
+    password: str
 
 class UserOut(BaseModel):
     id: int
-    email: EmailStr
+    email: str
     full_name: str
-    created_at: str | None = None
 
     class Config:
-        orm_mode = True  # required if you want to return SQLAlchemy models directly
+        from_attributes = True

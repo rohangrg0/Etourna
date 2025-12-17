@@ -179,3 +179,14 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+
+# Frontend (Node / Vite)
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.vite/
+frontend/.parcel-cache/
+
+# Local frontend env files (optional)
+frontend/.env
+frontend/.env.local
