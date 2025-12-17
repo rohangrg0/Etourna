@@ -16,7 +16,7 @@ const Sidebar: React.FC<SidebarProps> = ({ username, avatarUrl }) => {
   const location = useLocation();
 
   const menuItems = [
-    { label: "Home", icon: <Home size={20} />, to: "/admindb" }, // admin dashboard
+    { label: "Home", icon: <Home size={20} />, to: "/admindb" },
     { label: "Players Info", icon: <Users size={20} />, to: "/admin/players" },
     { label: "Match List", icon: <List size={20} />, to: "/admin/matches" },
     { label: "Tournament History", icon: <History size={20} />, to: "/admin/history" },
@@ -30,7 +30,7 @@ const Sidebar: React.FC<SidebarProps> = ({ username, avatarUrl }) => {
     <aside
       className={`${
         expanded ? "w-64" : "w-20"
-      } bg-[#11121A] text-gray-300 border-r border-cyan-500 transition-all duration-300 flex flex-col`}
+      } bg-[#FAF7F0] text-gray-800 border-r-4 border-[#B17457] transition-all duration-300 flex flex-col`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -51,9 +51,9 @@ const Sidebar: React.FC<SidebarProps> = ({ username, avatarUrl }) => {
       <div className="flex justify-end p-2">
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="text-[#00FFFF] hover:text-white transition"
+          className="text-[#B17457] hover:text-[#8c5c43] font-semibold transition"
         >
-          {isCollapsed ? "" : ""}
+          {isCollapsed ? ">" : "<"}
         </button>
       </div>
 
@@ -62,14 +62,14 @@ const Sidebar: React.FC<SidebarProps> = ({ username, avatarUrl }) => {
         <img
           src={avatarUrl || "https://via.placeholder.com/80"}
           alt="Admin Avatar"
-          className={`rounded-full border-2 border-cyan-500 object-cover transition-all duration-300 ${
+          className={`rounded-full border-2 border-[#B17457] object-cover transition-all duration-300 ${
             expanded ? "w-20 h-20" : "w-12 h-12"
           }`}
         />
         {expanded && (
           <>
-            <p className="mt-2 font-bold text-[#00FFFF]">{username}</p>
-            <p className="text-sm text-gray-400">Admin</p>
+            <p className="mt-2 font-bold text-[#B17457]">{username}</p>
+            <p className="text-sm text-gray-600">Admin</p>
           </>
         )}
       </div>
@@ -82,8 +82,8 @@ const Sidebar: React.FC<SidebarProps> = ({ username, avatarUrl }) => {
             to={item.to}
             className={`flex items-center space-x-3 px-2 py-2 rounded-md transition-colors ${
               location.pathname === item.to
-                ? "bg-[#00FFFF]/20 text-[#00FFFF]"
-                : "text-gray-300 hover:text-[#00FFFF] hover:bg-[#1A1B25]"
+                ? "bg-[#B17457] text-white"
+                : "text-gray-800 hover:text-white hover:bg-[#B17457]"
             }`}
           >
             {item.icon}

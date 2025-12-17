@@ -1,8 +1,3 @@
-"""Top-level runner for uvicorn compatibility.
-
-This file re-exports the FastAPI `app` defined in `app/main.py` so commands
-like `uvicorn main:app --reload` (when run in `backend/`) will work.
-"""
 
 from app.main import app  # re-export for uvicorn
 

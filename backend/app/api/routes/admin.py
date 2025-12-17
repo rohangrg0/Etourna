@@ -1,17 +1,23 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from app.schemas.admin import AdminLogin
-from app.crud import admin as crud_admin
-from app.dependencies.db import get_db
+from app.database.session import get_db
+from app.models.admin import Admin
+from app.schemas.admin import AdminLogin, Token
+from app.core.security import verify_password, create_access_token
 
-router = APIRouter(prefix="/admin", tags=["Admin"])
+router = APIRouter(prefix="/admin", tags=["Admin Auth"])
 
-@router.post("/login")
-def admin_login(admin_data: AdminLogin, db: Session = Depends(get_db)):
-    token_data = crud_admin.authenticate_admin(db, admin_data)
-    if not token_data:
+@router.post("/login", response_model=Token)
+def admin_login(data: AdminLogin, db: Session = Depends(get_db)):
+    admin = db.query(Admin).filter(Admin.email == data.email).first()
+
+    if not admin or not verify_password(data.password, admin.password):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid email or password"
         )
-    return token_data
+
+
+    token = create_access_token({"sub": str(admin.id), "role": "admin"})
+
+    return {"access_token": token}
