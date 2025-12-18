@@ -1,12 +1,16 @@
-# app/api/routes/users.py
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from app.database.session import get_db
-from app.models.user import User  # your SQLAlchemy User model
+from app.schemas.user import UserLogin
+from app.crud.user import login_user
+from app.dependencies.db import get_db
+from app.core.security import create_access_token
 
-router = APIRouter(prefix="/users", tags=["Users"])
+router = APIRouter(prefix="/auth", tags=["Auth"])
 
-@router.get("/count")
-def count_users(db: Session = Depends(get_db)):
-    total_users = db.query(User).count()
-    return {"count": total_users}
+
+# --- Login ---
+@router.post("/login")
+def login(user: UserLogin, db: Session = Depends(get_db)):
+    db_user = login_user(db, user.email, user.password)
+    token = create_access_token({"sub": db_user.email})
+    return {"access_token": token, "token_type": "bearer"}

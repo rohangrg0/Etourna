@@ -17,9 +17,8 @@ import Mlb from "../assets/games/mlb.jpeg";
 import Fort from "../assets/games/fort.jpg";
 import Dot from "../assets/games/Dot.jpeg";
 import Pg from "../assets/games/pg.jpeg";
-
-
-
+import Cs from "../assets/games/cs.png";
+import Csgo from "../assets/games/csgo.jpg";
 
 const games = [
   { title: "Dota 2", description: "Epic 5v5 MOBA action.", image: Dota, backImage: Dot, link: "/dota2" },
@@ -29,8 +28,58 @@ const games = [
   { title: "League of Legends", description: "Strategic MOBA gameplay.", image: Lol, backImage: Loll, link: "/lol" },
   { title: "Mobile Legends", description: "Fast-paced 5v5 MOBA.", image: Mlbb, backImage: Mlb, link: "/mlbb" },
   { title: "PUBG Mobile", description: "Classic survival battle royale.", image: Pubgm, backImage: Pg, link: "/pubgm" },
-  { title: "Valorant", description: "Tactical FPS with agents.", image: Valorant, backImage: Val, link: "/valorant" },
+  { title: "Valorant", description: "Tactical FPS with unique agents.", image: Valorant, backImage: Val, link: "/valorant" },
+  { title: "CS:GO", description: "Legendary competitive tactical FPS.", image: Cs, backImage: Csgo, link: "/csgo" },
 ];
+
+// Reusable GameCard component
+interface GameCardProps {
+  game: typeof games[0];
+  isFlipped: boolean;
+  onClick: () => void;
+}
+
+const GameCard: React.FC<GameCardProps> = ({ game, isFlipped, onClick }) => {
+  return (
+      <div
+          className="relative w-64 h-80 cursor-pointer perspective-[1200px] flex-shrink-0"
+          onClick={onClick}
+      >
+        <div
+            className={`relative w-full h-full transition-transform duration-700 transform-gpu ${
+                isFlipped ? "rotate-y-180" : ""
+            }`}
+            style={{ transformStyle: "preserve-3d" }}
+        >
+          {/* Front */}
+          <div className="absolute inset-0 rounded-xl overflow-hidden shadow-lg backface-hidden">
+            <img src={game.image} alt={game.title} className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+              <h3 className="text-xl font-bold text-white">{game.title}</h3>
+            </div>
+          </div>
+          {/* Back */}
+          <div className="absolute inset-0 rounded-xl overflow-hidden shadow-lg rotate-y-180 backface-hidden">
+            <img
+                src={game.backImage}
+                alt={`${game.title} back`}
+                className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/60 flex flex-col justify-center items-center text-center p-6">
+              <h3 className="text-xl font-bold mb-3">{game.title}</h3>
+              <p className="text-gray-300 mb-4">{game.description}</p>
+              <a
+                  href={game.link}
+                  className="bg-gradient-to-r from-[#B17457] to-[#D8D2C2] hover:from-[#B17457] hover:to-[#B17457] text-white font-bold py-2 px-6 rounded transition-colors duration-500 ease-in-out"
+              >
+                Go Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+  );
+};
 
 const GamesSection: React.FC = () => {
   const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
@@ -49,116 +98,46 @@ const GamesSection: React.FC = () => {
   }, []);
 
   return (
-    <section
-      id="games"
-      className="min-h-screen flex flex-col justify-center items-center bg-[#FAF7F0] px-8 py-16 overflow-hidden"
-    >
-      <h2 className="text-4xl font-bold mb-12 text-[#B17457]">Games</h2>
-
-      {/* Top row: Right → Left */}
-      <div
-        className="flex gap-10 transition-transform duration-300 mb-16"
-        style={{
-          transform: `translateX(calc(50vw - ${scrollX}px))`,
-        }}
+      <section
+          id="games"
+          className="min-h-screen flex flex-col justify-center items-center bg-[#FAF7F0] px-8 py-16 overflow-hidden"
       >
-        {games.map((game, index) => {
-          const isFlipped = flippedIndex === index;
-          return (
-            <div
-              key={`top-${index}`}
-              className="relative w-64 h-80 cursor-pointer perspective-[1200px] flex-shrink-0"
-              onClick={() => handleFlip(index)}
-            >
-              <div
-                className={`relative w-full h-full transition-transform duration-700 transform-gpu ${
-                  isFlipped ? "rotate-y-180" : ""
-                }`}
-                style={{ transformStyle: "preserve-3d" }}
-              >
-                {/* Front */}
-                <div className="absolute inset-0 rounded-xl overflow-hidden shadow-lg backface-hidden">
-                  <img src={game.image} alt={game.title} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                    <h3 className="text-xl font-bold text-white">{game.title}</h3>
-                  </div>
-                </div>
-                {/* Back */}
-                <div className="absolute inset-0 rounded-xl overflow-hidden shadow-lg rotate-y-180 backface-hidden">
-                  <img
-                    src={game.backImage}
-                    alt={`${game.title} back`}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-black/60 flex flex-col justify-center items-center text-center p-6">
-                    <h3 className="text-xl font-bold mb-3">{game.title}</h3>
-                    <p className="text-gray-300 mb-4">{game.description}</p>
-                    <a
-                      href={game.link}
-                      className="bg-gradient-to-r from-[#B17457] to-[#D8D2C2] hover:from-[#B17457] hover:to-[#B17457] text-white font-bold py-2 px-6 rounded transition-colors duration-500 ease-in-out"
-                    >
-                      Go Now
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+        <h2 className="text-4xl font-bold mb-12 text-[#B17457]">Games</h2>
 
-      {/* Bottom row: Left → Right */}
-      <div
-        className="flex gap-10 transition-transform duration-300"
-        style={{
-          transform: `translateX(calc(-50vw + ${scrollX}px))`,
-        }}
-      >
-        {games.map((game, index) => {
-          const isFlipped = flippedIndex === index + 100; // unique index for bottom row
-          return (
-            <div
-              key={`bottom-${index}`}
-              className="relative w-64 h-80 cursor-pointer perspective-[1200px] flex-shrink-0"
-              onClick={() => handleFlip(index + 100)}
-            >
-              <div
-                className={`relative w-full h-full transition-transform duration-700 transform-gpu ${
-                  isFlipped ? "rotate-y-180" : ""
-                }`}
-                style={{ transformStyle: "preserve-3d" }}
-              >
-                {/* Front */}
-                <div className="absolute inset-0 rounded-xl overflow-hidden shadow-lg backface-hidden">
-                  <img src={game.image} alt={game.title} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                    <h3 className="text-xl font-bold text-white">{game.title}</h3>
-                  </div>
-                </div>
-                {/* Back */}
-                <div className="absolute inset-0 rounded-xl overflow-hidden shadow-lg rotate-y-180 backface-hidden">
-                  <img
-                    src={game.backImage}
-                    alt={`${game.title} back`}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-black/60 flex flex-col justify-center items-center text-center p-6">
-                    <h3 className="text-xl font-bold mb-3">{game.title}</h3>
-                    <p className="text-gray-300 mb-4">{game.description}</p>
-                    <a
-                      href={game.link}
-                      className="bg-gradient-to-r from-[#B17457] to-[#D8D2C2] hover:from-[#B17457] hover:to-[#B17457] text-white font-bold py-2 px-6 rounded transition-colors duration-500 ease-in-out"
-                    >
-                      Go Now
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </section>
+        {/* Top row: Right → Left */}
+        <div
+            className="flex gap-10 transition-transform duration-300 mb-16"
+            style={{
+              transform: `translateX(calc(50vw - ${scrollX}px))`,
+            }}
+        >
+          {games.map((game, index) => (
+              <GameCard
+                  key={`top-${index}`}
+                  game={game}
+                  isFlipped={flippedIndex === index}
+                  onClick={() => handleFlip(index)}
+              />
+          ))}
+        </div>
+
+        {/* Bottom row: Left → Right */}
+        <div
+            className="flex gap-10 transition-transform duration-300"
+            style={{
+              transform: `translateX(calc(-50vw + ${scrollX}px))`,
+            }}
+        >
+          {games.map((game, index) => (
+              <GameCard
+                  key={`bottom-${index}`}
+                  game={game}
+                  isFlipped={flippedIndex === index + 100} // unique index for bottom row
+                  onClick={() => handleFlip(index + 100)}
+              />
+          ))}
+        </div>
+      </section>
   );
 };
 

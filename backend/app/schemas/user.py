@@ -1,18 +1,27 @@
-from pydantic import BaseModel
+# app/schemas/user.py
+from pydantic import BaseModel, EmailStr
 
 class UserCreate(BaseModel):
-    email: str
+    email: EmailStr
+    username: str
     full_name: str
     password: str
+    phone: str
+    address: str
+    category_id: int  # must exist in categories table
 
-class UserLogin(BaseModel):
-    email: str
-    password: str
-
-class UserOut(BaseModel):
+class UserResponse(BaseModel):
     id: int
     email: str
+    username: str
     full_name: str
+    phone: str
+    address: str
+    category_id: int
 
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str
+    
     class Config:
-        from_attributes = True
+        orm_mode = True

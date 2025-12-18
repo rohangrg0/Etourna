@@ -7,3 +7,4 @@ argon2-cffi
 python-jose==3.3.0
 python-dotenv
 pydantic
+pydantic[email]

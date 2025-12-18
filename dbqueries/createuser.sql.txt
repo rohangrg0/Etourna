@@ -1,0 +1,21 @@
+CREATE TABLE zoc.users (
+    id SERIAL PRIMARY KEY,
+
+    email VARCHAR(255) UNIQUE NOT NULL,
+    username VARCHAR(100) UNIQUE NOT NULL,
+    full_name VARCHAR(150) NOT NULL,
+
+    password_hash TEXT NOT NULL,
+
+    phone VARCHAR(20) NOT NULL,
+    address TEXT NOT NULL,
+
+    category_id INT NOT NULL,
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_users_category
+        FOREIGN KEY (category_id)
+        REFERENCES zoc.categories(id)
+        ON DELETE RESTRICT
+);

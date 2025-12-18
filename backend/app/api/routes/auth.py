@@ -1,28 +1,27 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from app.schemas.user import UserCreate, UserLogin, UserOut
+from app.schemas.user import UserCreate, UserResponse
 from app.crud.user import get_user_by_email, create_user
 from app.dependencies.db import get_db
-from app.core.security import verify_password, create_access_token, hash_password
 
-router = APIRouter(prefix="/auth", tags=["Auth"]) 
+router = APIRouter(prefix="/auth", tags=["Auth"])
 
-@router.post("/register", response_model=UserOut)
+@router.post("/register", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
 def register(user: UserCreate, db: Session = Depends(get_db)):
+    # Check if email already exists
     if get_user_by_email(db, user.email):
-        raise HTTPException(status_code=400, detail="Email already registered")
-    return create_user(db, user)
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Email already registered"
+        )
 
-@router.post("/login")
-def login(user: UserLogin, db: Session = Depends(get_db)):
-    db_user = get_user_by_email(db, user.email)
-    if not db_user or not verify_password(user.password, db_user.password):
-        raise HTTPException(status_code=401, detail="Invalid credentials")
-    # Rehash stored password with current algorithm if needed
-    if hash_password(db_user.password):
-        db_user.password = hash_password(user.password)
-        db.add(db_user)
-        db.commit()
-        db.refresh(db_user)
-    token = create_access_token({"sub": db_user.email})
-    return {"access_token": token, "token_type": "bearer"}
+    try:
+        # Create user in database
+        new_user = create_user(db, user)
+        return new_user
+    except Exception as e:
+        # Return proper error if something goes wrong
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to register user: {str(e)}"
+        )
